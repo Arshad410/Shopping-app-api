@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const db = require("./src/models");
-const {productRouter, userRouter} = require("./src/routes");
+const {productRouter, userRouter, orderRouter, orderDetailsRouter, paymentRouter} = require("./src/routes");
 const authMiddleware = require("./src/middlewares/auth-middleware");
 const PORT_NUMBER = 3000;
 
@@ -15,12 +15,15 @@ ecomm.use(helmet());
 ecomm.use(morgan("dev"));
 ecomm.use(authMiddleware);
 ecomm.use(express.json());
-ecomm.use(express.urlencoded({ extended:true }));
+ecomm.use(express.urlencoded({ extended:true })); 
 
 db.sequelize.sync();
 
 ecomm.use("/products", productRouter);
-ecomm.use("/auth", userRouter)
+ecomm.use("/auth", userRouter);
+ecomm.use("/order", orderRouter);
+ecomm.use("/orderDetails", orderDetailsRouter);
+ecomm.use("/payment", paymentRouter);
 
 ecomm.listen(PORT_NUMBER, (error) => {
     if(error){
