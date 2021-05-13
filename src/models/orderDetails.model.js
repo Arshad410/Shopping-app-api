@@ -3,8 +3,8 @@ const {DataTypes} = require("sequelize");
 module.exports = function(sequelize) {
     return sequelize.define("OrderDetail", {
         detailsId: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey : true,
             allowNull : false
         },
@@ -18,10 +18,7 @@ module.exports = function(sequelize) {
             type: DataTypes.DECIMAL(10, 2),
             defaultValue: 0.0,
             allowNull: false
-        },
-        detailsStatus : {
-            type: DataTypes.STRING,
-            defaultValue: "pending"
         }
+        
     })
 };

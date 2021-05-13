@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const db = require("./src/models");
-const {productRouter, userRouter, orderRouter, orderDetailsRouter, paymentRouter} = require("./src/routes");
+const {productRouter, userRouter, orderRouter, orderDetailsRouter, paymentRouter, addressRouter} = require("./src/routes");
 const authMiddleware = require("./src/middlewares/auth-middleware");
 const PORT_NUMBER = 3000;
 
@@ -24,6 +24,7 @@ ecomm.use("/auth", userRouter);
 ecomm.use("/order", orderRouter);
 ecomm.use("/orderDetails", orderDetailsRouter);
 ecomm.use("/payment", paymentRouter);
+ecomm.use("/address", addressRouter);
 
 ecomm.listen(PORT_NUMBER, (error) => {
     if(error){

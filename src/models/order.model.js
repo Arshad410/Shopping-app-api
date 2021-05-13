@@ -6,6 +6,7 @@ module.exports = function(sequelize) {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+            initialAutoIncrement: 1000,   
             allowNull: false
         },
         orderName: {
@@ -20,10 +21,6 @@ module.exports = function(sequelize) {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         },
-        orderQuantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 1
-        },
         orderAmount: {
             type: DataTypes.DECIMAL(10, 2),
             defaultValue: 0.0,
@@ -32,10 +29,6 @@ module.exports = function(sequelize) {
         orderStatus: {
             type: DataTypes.STRING,
             defaultValue: "pending"
-        },
-        arrivalDate: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
         }
     })
-};
+}; 

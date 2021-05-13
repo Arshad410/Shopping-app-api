@@ -1,10 +1,9 @@
 const skipUrls = [
     { method: ["post"], url: "/auth/login" },
     { method: ["post"], url: "/auth/register" },
-    { method: ["get"], url: "/product" },
-    { method: ["post"], url: "/order"}
+    { method: ["post"], url: "/products/bulk" },
 ];
-
+ 
 const checkIfToBeSkipped = (request) => {
     const filtered = skipUrls.find((s) => request.url.includes(s.url));
     if(filtered) {

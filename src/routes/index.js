@@ -3,5 +3,6 @@ module.exports = {
     userRouter: require("./user.route"),
     orderRouter: require("./order.route"),
     orderDetailsRouter: require("./orderDetails.route"),
-    paymentRouter: require("./payment.route")
+    paymentRouter: require("./payment.route"),
+    addressRouter: require("./address.route")
 };

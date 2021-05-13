@@ -8,9 +8,9 @@ const checkStatus = async (req, res) => {
         if(message === "pending"){
             message = "completed"
         }
-        return res.status(200).json({message})
+        return res.status(200).json({message});
     } catch(e) {
-        return res.status(400).json(e);
+        return res.status(400).json(e); 
     }
 }
 

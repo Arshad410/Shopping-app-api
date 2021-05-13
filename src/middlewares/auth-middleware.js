@@ -15,7 +15,7 @@ module.exports = function(req,res,next) {
 
             res.locals.user = { id: decoded.subject};
             next();
-        }catch(err){
+        } catch(err) {
             return res.status(401).send({message: "UNAUTHORISED ACCESS"});
         }
     }
