@@ -6,7 +6,7 @@ const cors = require("cors");
 const db = require("./src/models");
 const {productRouter, userRouter, orderRouter, orderDetailsRouter, paymentRouter, addressRouter} = require("./src/routes");
 const authMiddleware = require("./src/middlewares/auth-middleware");
-const PORT_NUMBER = 3000;
+const PORT_NUMBER = 5000;
 
 const ecomm = express();
 

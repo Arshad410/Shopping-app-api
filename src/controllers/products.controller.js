@@ -1,17 +1,5 @@
 const {products} = require("../models");
 
-const getPagination = (page, size) => {
-    const limit = size ? +size : 10;
-    const offset = page ? (page - 1) * limit : 0;
-    return { limit, offset };
-};
-
-const getPagingData = (data, page, limit) => {
-    const { count: totalItems, rows } = data;
-    const totalPages = Math.ceil(totalItems / limit);
-    return { totalItems, rows, totalPages, currentPage: page ? page : 1 };
-};
-
 const add = async (req,res) => {
     try {
         const record = await products.create({...req.body});
@@ -52,11 +40,8 @@ const remove = async (req,res) => {
 
 const getAll = async (req,res) => {
     try{
-        const { page, size } = req.query;
-        const { limit, offset } = getPagination(page, size);
-        const data = await products.findAndCountAll({ offset, limit });
-        const response = getPagingData(data, page, limit);
-        return res.status(200).send(response);  
+        const data = await products.findAll();
+        return res.status(200).send(data);  
     } catch(e){
         return res.status(400).json(e.message);
     }

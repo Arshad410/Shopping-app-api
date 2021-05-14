@@ -2,6 +2,7 @@ const skipUrls = [
     { method: ["post"], url: "/auth/login" },
     { method: ["post"], url: "/auth/register" },
     { method: ["post"], url: "/products/bulk" },
+    { method: ["get"], url: "/products"} 
 ];
  
 const checkIfToBeSkipped = (request) => {
