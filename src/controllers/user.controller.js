@@ -33,6 +33,7 @@ const login = async (req, res) => {
         let access_token = null;
         if(data === null) {
             message = "No user found!!";
+            return res.status(404).json({message});
         } else {
             const verify = await bcrypt.compare(password, data.userPassword);
             if(verify === true) {
@@ -40,8 +41,9 @@ const login = async (req, res) => {
                 access_token = generateToken(data.userId);
             }else {
                 message = "Invalid login details";
+                return res.status(404).json({message});
             }
-            return res.status(200).json({ message, access_token});
+            return res.status(200).json({ message, access_token}); 
         }
     } catch(e) {
         return res.status(400).json(e);
@@ -70,7 +72,7 @@ const profile = async (req, res) => {
         });
         return res.status(200).send(data);
     } catch(e) {
-        return res.status(400).send(e);
+        return res.status(400).send(e); 
     }
 };
 
