@@ -7,6 +7,10 @@ module.exports = function(sequelize){
             primaryKey: true,
             allowNull : false
         },
+        userName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         userEmail: {
             type: DataTypes.STRING,
             unique: true,

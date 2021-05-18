@@ -52,12 +52,13 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        const { email, password, contact } = req.body;
+        const { name, email, contact, password } = req.body;
         const hashed = await hashedPassword(password);
         const data = await user.create({
             userEmail : email,
             userPassword : hashed,
-            userContact : contact
+            userContact : contact,
+            userName: name,
         }); 
         return res.status(201).json(data);
     } catch(e) {
@@ -68,7 +69,7 @@ const register = async (req, res) => {
 const profile = async (req, res) => {
     try {
         const data = await user.findByPk(res.locals.user.id, {
-            attributes: ["userId", "userEmail", "userContact"],
+            attributes: ["userId", "userEmail", "userContact","userName"],
         });
         return res.status(200).send(data);
     } catch(e) {
