@@ -2,10 +2,10 @@ const {order} = require("../models");
 
 const add = async (req,res) => {
     try {
-        const {id, name} = req.body;
+        const {name, amount} = req.body;
         const record = await order.create({
-            orderId : id,
             orderName : name,
+            orderAmount: amount
         });
         return res.status(200).json(record);
     } catch(e){

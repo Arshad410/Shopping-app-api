@@ -2,7 +2,17 @@ const {address} = require("../models");
 
 const add = async (req,res) => {
     try {
-        const record = await address.create({...req.body});
+        const {no, name, street, locality, city, state, pincode} = req.body;
+
+        const record = await address.create({
+            aptNo: no,
+            aptName: name,
+            street: street,
+            locality: locality,
+            city: city,
+            state: state,
+            pincode: pincode
+        });
         return res.status(200).json(record);
     } catch(e){
         return res.status(400).json(e);

@@ -29,7 +29,7 @@ module.exports = function(sequelize) {
         paymentReady: {
             type: DataTypes.ENUM,
             values: ["yes","no"],
-            defaultValue: "no"
+            defaultValue: "yes"
         }
         
     })

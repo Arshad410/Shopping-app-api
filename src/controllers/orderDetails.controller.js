@@ -1,5 +1,19 @@
 const {orderDetails} = require("../models");
 
+const add = async (req,res) => {
+    try {
+        const { name, amount, productId} = req.body;
+        const record = await orderDetails.create({
+            detailsName: name,
+            detailsAmount: amount,
+            ProductProductId: productId
+        });
+        return res.status(200).json(record);
+    } catch(e){
+        return res.status(400).json(e);
+    }
+};
+
 
 const update = async (req, res) => {
     try{
@@ -39,6 +53,7 @@ const getAll = async (req,res) => {
 };
 
 module.exports = {
+    add,
     update,
     remove,
     getAll
